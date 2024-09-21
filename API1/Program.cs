@@ -1,3 +1,4 @@
+using API1.Services;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,6 +14,11 @@ var configuration = new ConfigurationBuilder()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IConfiguration>(configuration);
+
+builder.Services.AddSingleton<TasksService>();
+
+builder.Services.Configure<TasksDatabaseSettings>(
+    builder.Configuration.GetSection("TaskStoreDatabase"));
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 namespace API1.Models;
 
-public class Task
+public class Tasks
 {
     public string? TaskName { get; set; }
     public string? Details { get; set; }
