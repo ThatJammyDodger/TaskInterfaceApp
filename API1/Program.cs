@@ -1,4 +1,5 @@
 using API1.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,16 @@ builder.Services.AddSingleton<TasksService>();
 builder.Services.Configure<TasksDatabaseSettings>(
     builder.Configuration.GetSection("TaskStoreDatabase"));
 
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(options =>
+{
+    options.Authority = configuration["AuthAuthority"];
+    options.Audience = configuration["AuthAudience"];
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -30,8 +41,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-
+app.UseAuthentication();
 
 
 
