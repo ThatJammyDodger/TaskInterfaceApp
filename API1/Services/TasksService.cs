@@ -30,4 +30,7 @@ public class TasksService
 
     public async Task RemoveAsync(string id) =>
         await _users.DeleteOneAsync(x => x.Id == id);
+    
+    public async Task<User> IdFromEmailAsync(string email) =>
+        await _users.Find(x => x.Email == email).FirstOrDefaultAsync();
 }

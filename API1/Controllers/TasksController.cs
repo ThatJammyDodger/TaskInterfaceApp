@@ -27,6 +27,15 @@ public class TasksController : ControllerBase
             return NotFound();
     }
 
+    [HttpGet("{email}")]
+    public async Task<ActionResult<string>> IdFromEmail(string email)
+    {
+        var user = await _tService.IdFromEmailAsync(email);
+        if (user is not null)
+            return user.Id;
+        else return NotFound();
+    }
+
     [HttpPost]
     public async Task<IActionResult> Post(User newUser)
     {
