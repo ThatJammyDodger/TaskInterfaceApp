@@ -33,21 +33,24 @@ function Navbar() {
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#003366' }}>
-      <Container maxWidth="xl">
+      <Container maxWidth="false">
         <Toolbar disableGutters>
-          <Typography
-            variant="h5"
-            noWrap
-            component="div"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              color: 'white',
-              textDecoration: 'none',
-            }}
-          >
-            Project 1
-          </Typography>
+          <Link to="/">
+            <Typography
+                variant="h5"
+                noWrap
+                component="div"
+                sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                color: 'white',
+                textDecoration: 'none',
+                }}
+            >
+                Project 1
+            </Typography>
+          </Link>
+          
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <IconButton
