@@ -32,11 +32,11 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#0085FF' }}>
+    <AppBar position="static" sx={{ backgroundColor: '#003366' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
-            variant="h6"
+            variant="h5"
             noWrap
             component="div"
             sx={{
@@ -46,7 +46,7 @@ function Navbar() {
               textDecoration: 'none',
             }}
           >
-            Hello, World!
+            Project 1
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -104,15 +104,6 @@ function Navbar() {
             ))}
           </Box>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <IconButton size="large" color="inherit">
-              <SearchIcon />
-            </IconButton>
-            <InputBase
-              placeholder="Search…"
-              sx={{ color: 'inherit', ml: 1 }}
-            />
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>

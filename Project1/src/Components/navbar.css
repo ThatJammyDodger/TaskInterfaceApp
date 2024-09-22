@@ -1,0 +1,15 @@
+/* Reset padding and margin for the entire page */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Ensure the AppBar takes the full width */
+.MuiAppBar-root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}

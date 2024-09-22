@@ -1,13 +1,38 @@
-import './App.css'
+import { useState } from 'react'
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import HomePage from './Pages/HomePage'
+import Page404 from './Pages/Page404'
+import About from './Pages/About'
 import Navbar from './Components/navbar'
-import Routing from './Routing'
+import Container from './Container'
 
-export default function App() {
-    return (
-        <>
-          <div>
-            <Navbar />
-          </div>
-        </>
-    )
+function App() {
+  const router = createBrowserRouter(
+    [
+      {
+        path: '/',
+        element: <Container />,
+        errorElement: <Page404 />,
+        children: [
+          {
+            path: '/',
+            element: <HomePage />
+          },
+          {
+            path: '/about',
+            element: <About />
+          }
+        ]
+      },
+    ]
+  )
+
+  return (
+    <>
+      <RouterProvider router={router}>
+      </RouterProvider>
+    </>
+  )
 }
+
+export default App
