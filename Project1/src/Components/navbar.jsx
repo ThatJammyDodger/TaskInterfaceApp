@@ -21,6 +21,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
+  { name: 'Your Tasks', path: '/tasks', requireAuth: true},
   { name: 'Profile', path: '/profile', requireAuth: true },
 ];
 

@@ -1,9 +1,15 @@
 import "./About.css"
+import { useEffect } from "react"
 
 export default function About() {
-    return (
-        <>
-          <h3>About this website</h3>
-        </>
-    )
+  let title = "About"
+  useEffect(() => {
+    document.title = title
+  }, [title])
+  
+  return (
+      <>
+        <h3>About this website</h3>
+      </>
+  )
 }

@@ -1,12 +1,16 @@
-import React from "react";
+import { React, useEffect } from "react";
 import { Container, Row, Col } from "reactstrap";
-import './Profile.css'
+import './ProfilePage.css'
 
 import Loading from "../Components/Loading";
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 
-export const ProfileComponent = () => {
+export function ProfilePage() {
   const { user } = useAuth0();
+  let title = "Profile"
+  useEffect(() => {
+    document.title = title
+  }, [title])
 
   return (
     <Container className="mb-5 profile">
@@ -16,8 +20,7 @@ export const ProfileComponent = () => {
           <img
             src={user.picture}
             alt="Profile"
-            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0"
-          />
+            className="rounded-circle img-fluid profile-picture mb-3 mb-md-0" style={{borderRadius: "50%"}}/>
         </Col>
         <Col md>
           <p className="lead text-muted">{user.email}</p>
@@ -28,8 +31,8 @@ export const ProfileComponent = () => {
       </Row>
     </Container>
   );
-};
+}
 
-export default withAuthenticationRequired(ProfileComponent, {
+export default withAuthenticationRequired(ProfilePage, {
   onRedirecting: () => <Loading />,
 });

@@ -7,7 +7,8 @@ import Container from './Container'
 import { AuthenticationGuard } from './Components/AuthenticationGuard'
 import { CallbackPage } from './Pages/CallbackPage'
 import { Auth0ProviderWithNavigate } from './Auth0WithNavigate'
-import Profile from './Pages/Profile'
+import Profile from './Pages/ProfilePage'
+import TasksPage from './Pages/TasksPage'
 
 const router = createBrowserRouter(
   [
@@ -32,6 +33,10 @@ const router = createBrowserRouter(
             {
               path: '/profile',
               element: <AuthenticationGuard component={Profile} />
+            },
+            {
+              path: '/tasks',
+              element: <AuthenticationGuard component={TasksPage} />
             }
           ]
         },
