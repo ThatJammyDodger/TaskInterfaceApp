@@ -1,6 +1,6 @@
 import './Navbar.css'
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -16,14 +16,21 @@ import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { NavBarButtons } from './Buttons/NavbarButtons';
+import { useAuth0 } from '@auth0/auth0-react';
 
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
+  { name: 'Profile', path: '/profile', requireAuth: true },
 ];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const { isAuthenticated } = useAuth0();
+  const [ upages, setPages ] = useState(filterPagesAuth(isAuthenticated))
+  useEffect(() => {
+    setPages(filterPagesAuth(isAuthenticated))
+  }, [isAuthenticated]);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
@@ -33,6 +40,7 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
+  let renderPages;
   const siteName = "Project 1"
 
   return (
@@ -77,7 +85,7 @@ function Navbar() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
-              {pages.map((page) => (
+              {upages.map((page) => (
                 <MenuItem key={page.name} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">
                     <Link to={page.path} style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -99,7 +107,7 @@ function Navbar() {
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {upages.map((page) => (
               <Button
                 key={page.name}
                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -119,3 +127,7 @@ function Navbar() {
 }
 
 export default Navbar;
+
+function filterPagesAuth(isAuth) {
+  return isAuth ? pages : pages.filter(p => p.requireAuth!=true);
+}
