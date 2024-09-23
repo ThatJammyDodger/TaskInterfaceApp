@@ -16,7 +16,7 @@ export default function LoginButton() {
     };
 
     return (
-        <Button className="button__login" onClick={handleLogin} variant="outlined">
+        <Button className="button__login" onClick={handleLogin} variant="contained">
             Login
         </Button>
     )

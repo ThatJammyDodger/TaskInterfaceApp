@@ -19,7 +19,7 @@ export default function SignupButton() {
     };
 
     return (
-        <Button className="button__login" onClick={handleLogin} variant="outlined">
+        <Button className="button__login" onClick={handleLogin} variant="contained">
             Sign up
         </Button>
     )

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { createBrowserRouter, RouterProvider } from "react-router-dom"
+import { BrowserRouter, createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from './Pages/HomePage'
 import Page404 from './Pages/Page404'
 import About from './Pages/About'
@@ -12,34 +12,35 @@ function App() {
     [
       {
         path: '/',
-        element: <Container />,
-        errorElement: <Page404 />,
+        element: <Auth0ProviderWithNavigate />,
         children: [
           {
             path: '/',
-            element: <HomePage />
+            element: <Container />,
+            errorElement: <Page404 />,
+            children: [
+              {
+                path: '/',
+                element: <HomePage />
+              },
+              {
+                path: '/about',
+                element: <About />
+              }
+            ]
           },
           {
-            path: '/about',
-            element: <About />
+            path: '/callback',
+            element: <CallbackPage />,
           }
         ]
-      },
-      {
-        path: '/callback',
-        element: <CallbackPage />,
-        errorElement: <Page404 />
       }
     ]
   )
 
   return (
     <>
-      <RouterProvider router={router}>
-        <Auth0ProviderWithNavigate>
-          
-        </Auth0ProviderWithNavigate>
-      </RouterProvider>
+      <RouterProvider router={router}/>
     </>
   )
 }

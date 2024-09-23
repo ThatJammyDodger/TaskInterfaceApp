@@ -15,6 +15,8 @@ import MenuItem from '@mui/material/MenuItem';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { NavBarButtons } from './Buttons/NavbarButtons';
+
 const pages = [
   { name: 'Home', path: '/' },
   { name: 'About', path: '/about' },
@@ -30,6 +32,8 @@ function Navbar() {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+  const siteName = "Project 1"
 
   return (
     <AppBar position="static" sx={{ backgroundColor: '#003366' }}>
@@ -47,7 +51,7 @@ function Navbar() {
                 textDecoration: 'none',
                 }}
             >
-                Project 1
+                {siteName}
             </Typography>
           </Link>
           
@@ -91,7 +95,7 @@ function Navbar() {
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' }, color: 'white' }}
           >
-            Hello, World!
+            {siteName}
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -106,6 +110,7 @@ function Navbar() {
               </Button>
             ))}
           </Box>
+          <NavBarButtons />
 
         </Toolbar>
       </Container>

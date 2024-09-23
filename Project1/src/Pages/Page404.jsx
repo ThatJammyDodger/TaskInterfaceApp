@@ -1,9 +1,15 @@
 import "./Page404.css"
+import Navbar from "../Components/navbar"
 
 export default function Page404() {
     return (
         <>
-          <h1>404 - Page has sadly not been found</h1>
+          <div>
+            <Navbar />
+          </div>
+          <div className="outlet-container">
+            <p>Sadly, the page you were looking for is a bit lost.</p>
+          </div>
         </>
     )
 }
