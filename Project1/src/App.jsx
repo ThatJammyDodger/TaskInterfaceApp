@@ -6,6 +6,7 @@ import About from './Pages/About'
 import Container from './Container'
 import { CallbackPage } from './Pages/CallbackPage'
 import { Auth0ProviderWithNavigate } from './Auth0WithNavigate'
+import Profile from './Pages/Profile'
 
 function App() {
   const router = createBrowserRouter(
@@ -13,6 +14,7 @@ function App() {
       {
         path: '/',
         element: <Auth0ProviderWithNavigate />,
+        errorElement: <Page404 />,
         children: [
           {
             path: '/',
@@ -26,6 +28,10 @@ function App() {
               {
                 path: '/about',
                 element: <About />
+              },
+              {
+                path: '/profile',
+                element: <Profile />
               }
             ]
           },
