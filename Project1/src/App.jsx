@@ -3,8 +3,9 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import HomePage from './Pages/HomePage'
 import Page404 from './Pages/Page404'
 import About from './Pages/About'
-import Navbar from './Components/navbar'
 import Container from './Container'
+import { CallbackPage } from './Pages/CallbackPage'
+import { Auth0ProviderWithNavigate } from './Auth0WithNavigate'
 
 function App() {
   const router = createBrowserRouter(
@@ -24,12 +25,20 @@ function App() {
           }
         ]
       },
+      {
+        path: '/callback',
+        element: <CallbackPage />,
+        errorElement: <Page404 />
+      }
     ]
   )
 
   return (
     <>
       <RouterProvider router={router}>
+        <Auth0ProviderWithNavigate>
+          
+        </Auth0ProviderWithNavigate>
       </RouterProvider>
     </>
   )
