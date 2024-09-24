@@ -15,6 +15,7 @@ var configuration = new ConfigurationBuilder()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddCors();
 
 builder.Services.AddSingleton<IConfiguration>(configuration);
 
@@ -47,6 +48,10 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseCors(x =>
+{
+    x.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:5173");
+});
 
 app.MapControllers();
 
