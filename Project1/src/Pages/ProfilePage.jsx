@@ -23,11 +23,11 @@ export function ProfilePage() {
             className="rounded-circle img-fluid profile-picture mb-3 mb-md-0" style={{borderRadius: "50%"}}/>
         </Col>
         <Col md>
-          <p className="lead text-muted">{user.email}</p>
+          <p className="lead text-muted">Email: {user.email}</p>
         </Col>
-      </Row>
-      <Row>
-        <p>{JSON.stringify(user, null, 2)}</p>
+        <Col md>
+          <p className="lead text-muted">Email verification status: {user.email_verified ? "Yes, we agree with your identity" : "No, verify!"}.</p>
+        </Col>
       </Row>
     </Container>
   );
