@@ -23,7 +23,6 @@ export function TasksPage(props) {
   useEffect(() => {
     const fetchUserId = async () => {
       try {
-        //const token = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InROaDhRYU51OHdLQTJtNzdrd1BVdyJ9.eyJpc3MiOiJodHRwczovL3N1cGVyYXBwLnVrLmF1dGgwLmNvbS8iLCJzdWIiOiJ2eG5YRThoMnk2bVJTWGtNOHN0ZmdBWGZaQXVNUlNJdUBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9hc3BuZXR0ZXN0cHJvamVjdC8iLCJpYXQiOjE3MjkxMTg4NDUsImV4cCI6MTcyOTIwNTI0NSwiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoidnhuWEU4aDJ5Nm1SU1hrTThzdGZnQVhmWkF1TVJTSXUifQ.YYMVhJCxMIM15OH-FCVcy_uhiYzXNkcJzyizu5IHDY2yqSaG-9GGzYn4ASDQUhIm2mKqTsWafDS9fFXEvvPtqX-Vcxl4zC3Un3aGxDCtcLtFvgrDVt6FQMQWjot5vFiNUScHofAgcqnvMbYsj3XqVFnL3H3IEH22qmr5zg1MWq8uK8aoVdAyMgy4shUHl600pBjURRVrqYa5GhH5C5DkoQVujFpLLf5OPc-Xva4D3-p0utfuRcZBikXVnyHkj37FimT-mDWwArYnw3pPii9-Wqp7PBakZbVZkD6Uv1kMEcO0Z6NXEObd5OK9V_Bil-acoaQWdeKZj6vzMgpFFCAHmg"
         const token = await getAccessTokenSilently()
         const response = await fetch(API_URL("Tasks/" + user.email), {
           headers: {
